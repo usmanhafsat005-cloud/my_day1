@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
           Image.network(
             "https://drive.google.com/file/d/1cnabVSOC4ER1KGDT4b_vjr_y-ay0dy-3/view?usp=drivesdk",
           ),
-          Text("Welcome to CAREDOCS, Login to continue"),
+          Text("Welcome to My Day Application, Login to continue"),
           SizedBox(height: 20),
           Text("Email:"),
           TextFormField(
@@ -48,8 +48,14 @@ class Login extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              if (email == "admin@idga.com.ng" && password == "12345678") {
-                Navigator.pushAndRemoveUntil(
+              print(email);
+              print(password);
+              try {
+                authServices.value.signIn(
+                  emailAddress: email,
+                  userpassword: password,
+                );
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Dashboard()),
                 );

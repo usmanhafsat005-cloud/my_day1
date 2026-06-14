@@ -3,18 +3,24 @@ import 'forget_password_sent.dart';
 import 'auth_services.dart';
 
 class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key});
+  ForgetPassword({super.key});
+
+  String email = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Forget Password")),
+      appBar: AppBar(title: Text("Forget Password")),
       body: Column(
         children: [
           Text("Use the form below to request for password reset"),
           SizedBox(height: 20),
           Text("Email:"),
-          TextFormField(),
+          TextFormField(
+            onChanged: (value) {
+              email = value;
+            },
+          ),
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
@@ -22,12 +28,10 @@ class ForgetPassword extends StatelessWidget {
               authServices.value.resetPassword(emailAddress: email);
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const ForgetPasswordSent(),
-                ),
+                MaterialPageRoute(builder: (context) => ForgetPasswordSent()),
               );
             },
-            child: const Text("Submit"),
+            child: Text("Submit"),
           ),
         ],
       ),

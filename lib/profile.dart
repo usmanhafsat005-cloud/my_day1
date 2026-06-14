@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_day/login.dart';
+import 'auth_services.dart';
+import 'change_username.dart';
+import 'change_password.dart';
+import 'delete_my_account.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
