@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
           Image.network(
             "https://drive.google.com/file/d/1cnabVSOC4ER1KGDT4b_vjr_y-ay0dy-3/view?usp=drivesdk",
           ),
-          Text("Welcome to My Day Application, Login to continue"),
+          Text("Welcome to CAREDOCS, Login to continue"),
           SizedBox(height: 20),
           Text("Email:"),
           TextFormField(
