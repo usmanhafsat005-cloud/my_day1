@@ -54,7 +54,7 @@ class AuthServices {
     await currentUser!.delete();
     await firebaseAuth.signOut();
   }
-
+ 
   Future<void> resetPasswordFromCurrentPassword({
     required String currentPassword,
     required String newPassword,

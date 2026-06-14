@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_day/forget_password.dart';
 
 class ForgetPasswordSent extends StatelessWidget {
   const ForgetPasswordSent({super.key});

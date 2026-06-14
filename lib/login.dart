@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'forget_password.dart';
 import 'sign_up.dart';
 import 'dashboard.dart';
+import 'auth_services.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -17,9 +19,9 @@ class Login extends StatelessWidget {
       body: Column(
         children: [
           Image.network(
-            "https://idga.com.ng/wp-content/uploads/2024/09/idga-logo.png",
+            "https://drive.google.com/file/d/1cnabVSOC4ER1KGDT4b_vjr_y-ay0dy-3/view?usp=drivesdk",
           ),
-          Text("Welcome to My Day Application, Login to continue"),
+          Text("Welcome to CAREDOCS, Login to continue"),
           SizedBox(height: 20),
           Text("Email:"),
           TextFormField(
@@ -45,15 +47,22 @@ class Login extends StatelessWidget {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {
-              if (email == "admin@idga.com.ng" && password == "12345678") {
+            onPressed: () async {
+              print(email);
+              print(password);
+              try {
+                await authServices.value.signIn(
+                  emailAddress: email,
+                  userpassword: password,
+                );
+                //thi will now ONLY execute if signin succede
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => Dashboard()),
                   (route) => false,
                 );
-              } else {
-                incorrect = true;
+              } on FirebaseAuthException catch (e) {
+                print(e.message);
               }
             },
             child: Text("Submit"),
