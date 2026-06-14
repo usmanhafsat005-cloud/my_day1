@@ -2,36 +2,45 @@ import 'package:flutter/material.dart';
 import 'forget_password_sent.dart';
 import 'auth_services.dart';
 
-class ForgetPassword extends StatelessWidget {
-  ForgetPassword({super.key});
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({super.key});
 
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
   String email = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Forget Password")),
+      appBar: AppBar(title: const Text("Forget Password")),
       body: Column(
         children: [
-          Text("Use the form below to request for password reset"),
-          SizedBox(height: 20),
-          Text("Email:"),
+          const Text("Use the form below to request for password reset"),
+          const SizedBox(height: 20),
+          const Text("Email:"),
           TextFormField(
             onChanged: (value) {
-              email = value;
+              setState(() {
+                email = value;
+              });
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               print(email);
               authServices.value.resetPassword(emailAddress: email);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ForgetPasswordSent()),
+                MaterialPageRoute(
+                  builder: (context) => const ForgetPasswordSent(),
+                ),
               );
             },
-            child: Text("Submit"),
+            child: const Text("Submit"),
           ),
         ],
       ),
