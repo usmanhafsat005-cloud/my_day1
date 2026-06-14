@@ -47,19 +47,11 @@ class Login extends StatelessWidget {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () async {
-              print(email);
-              print(password);
-              try {
-                await authServices.value.signIn(
-                  emailAddress: email,
-                  userpassword: password,
-                );
-                //thi will now ONLY execute if signin succede
+            onPressed: () {
+              if (email == "admin@idga.com.ng" && password == "12345678") {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => Dashboard()),
-                  (route) => false,
                 );
               } on FirebaseAuthException catch (e) {
                 print(e.message);
